@@ -68,7 +68,7 @@ System.out.println(arr); // [ 123, "world" ]
 </details>
 
 <details>
-<summary>Java</summary>
+<summary>Groovy</summary>
 
 ````groovy
 def obj = new JSONObject()
