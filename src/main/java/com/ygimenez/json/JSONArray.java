@@ -34,12 +34,7 @@ public class JSONArray extends ArrayList<Object> implements Cloneable {
 	public JSONArray() {
 	}
 
-	/**
-	 * Creates a new JSON array based on the supplied {@link Collection}.
-	 *
-	 * @param collection The entries to be included in this JSON array.
-	 */
-	public JSONArray(Collection<?> collection) {
+	private JSONArray(Collection<?> collection) {
 		addAll(collection);
 	}
 

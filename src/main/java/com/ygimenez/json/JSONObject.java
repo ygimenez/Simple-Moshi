@@ -34,12 +34,7 @@ public class JSONObject extends HashMap<String, Object> implements Cloneable, It
 	public JSONObject() {
 	}
 
-	/**
-	 * Creates a new JSON object based on the supplied {@link Map}.
-	 *
-	 * @param map The entries to be included in this JSON array.
-	 */
-	public JSONObject(Map<String, Object> map) {
+	private JSONObject(Map<String, Object> map) {
 		putAll(map);
 	}
 
