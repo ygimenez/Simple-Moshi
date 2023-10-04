@@ -6,7 +6,7 @@
 
     <groupId>com.github.ygimenez</groupId>
     <artifactId>Simple-Moshi</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
 
     <name>Simple Moshi Wrapper</name>
@@ -34,7 +34,7 @@
         <url>https://github.com/ygimenez/Simple-Moshi</url>
         <connection>scm:git:git@github.com:ygimenez/Simple-Moshi.git</connection>
         <developerConnection>scm:git:git@github.com:ygimenez/Simple-Moshi.git</developerConnection>
-        <tag>Simple-Moshi-1.1.1</tag>
+        <tag>Simple-Moshi-1.1.2</tag>
     </scm>
 
     <distributionManagement>
