@@ -38,6 +38,7 @@ import java.util.Map;
  */
 public abstract class JSONUtils {
 	static final Logger LOGGER = LoggerFactory.getLogger(JSONUtils.class);
+	private static boolean showErrors = false;
 
 	private static final Moshi moshi = new Moshi.Builder()
 			.add(OffsetDateTime.class, new Rfc3339DateJsonAdapter())
@@ -70,7 +71,11 @@ public abstract class JSONUtils {
 			return moshi.adapter(klass).nullSafe().fromJson(json);
 		} catch (IOException | JsonDataException e) {
 			LOGGER.debug(e.toString(), e);
-			LOGGER.debug(json);
+			if (showErrors) {
+				LOGGER.info(json);
+			} else {
+				LOGGER.debug(json);
+			}
 			return null;
 		}
 	}
@@ -87,7 +92,11 @@ public abstract class JSONUtils {
 			return (Map<String, Object>) moshi.adapter(Types.newParameterizedType(Map.class, String.class, Object.class)).fromJson(json);
 		} catch (IOException | JsonDataException e) {
 			LOGGER.debug(e.toString(), e);
-			LOGGER.debug(json);
+			if (showErrors) {
+				LOGGER.info(json);
+			} else {
+				LOGGER.debug(json);
+			}
 			return new HashMap<>();
 		}
 	}
@@ -104,7 +113,11 @@ public abstract class JSONUtils {
 			return (List<Object>) moshi.adapter(Types.newParameterizedType(List.class, Object.class)).fromJson(json);
 		} catch (IOException | JsonDataException e) {
 			LOGGER.debug(e.toString(), e);
-			LOGGER.debug(json);
+			if (showErrors) {
+				LOGGER.info(json);
+			} else {
+				LOGGER.debug(json);
+			}
 			return new ArrayList<>();
 		}
 	}
@@ -127,6 +140,15 @@ public abstract class JSONUtils {
 	 */
 	public static List<Object> toList(Object o) {
 		return toList(toJSON(o));
+	}
+
+	/**
+	 * Change parsing errors to INFO level.
+	 *
+	 * @param show Make parsing errors visible at INFO level.
+	 */
+	public static void showErrors(boolean show) {
+		showErrors = show;
 	}
 
 	static <T> T getOr(T get, T or) {
